@@ -1,94 +1,126 @@
 body {
-    margin: 0;
-    font-family: 0;
+  margin: 0;
+  font-family: 0;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: minmax(120px, 200px) minmax(240px, 1fr) 80px;
-    grid-template-rows: auto 1fr auto auto;
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) minmax(240px, 1fr) 80px;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "logotype search hamburger"
+    "images images images"
+    "contact contact contact"
+    "footnote footnote ."; //kropka oznacza brak nazwy
+
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(300px, auto) 1fr;
+    grid-template-rows: auto auto auto 1fr auto auto;
     grid-template-areas:
-        'logotype search hamburger'
-        'images images images'
-        'contact contact contact'
-        'footnote footnote .'; //kropka oznacza brak nazwy
-    //kontener
+      "logotype images"
+      "menu images"
+      "search images"
+      ". images"
+      "contact images"
+      "footnote footnote"; //kropka oznacza brak nazwy
+  }
+  //kontener
 
-    min-height: 100vh;
-    // min-width: 1240px;
-    margin: 0 auto;
-    text-align: center;
-
+  min-height: 100vh;
+  // min-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .logo {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    background-color: rgb(160, 72, 72);
-    height: 100px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: rgb(160, 72, 72);
+  height: 100px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  @media (min-width: 1024px) {
+    grid-area: logotype;
+  }
 }
 
 .search {
-    grid-column: 2/3;
-    grid-row: 1/2;
-    background-color: rgb(113, 190, 77);
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background-color: rgb(113, 190, 77);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  @media (min-width: 1024px) {
+    grid-area: search;
+    min-height: 80px;
+  }
 }
 
 .menu {
-    grid-column: -1/-2;
-    grid-row: 1/2;
-    background-color: rgb(204, 54, 146);
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
+  grid-column: -1/-2;
+  grid-row: 1/2;
+  background-color: rgb(204, 54, 146);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  @media (min-width: 1024px) {
+    grid-area: menu;
+    min-height: 300px;
+  }
 }
 
 .gallery {
-    grid-column: 1/-1;
-    grid-row: 2/3;
-    background-color: rgb(21, 94, 153);
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  background-color: rgb(21, 94, 153);
 
-    //kontener
+  //kontener
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); //automatycznie stwórz ilość kolumn o min. wielkości 205px do 1 fr
-    gap: 15px;
-    padding: 120px 15px 15px;
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(205px, 1fr)
+  ); //automatycznie stwórz ilość kolumn o min. wielkości 205px do 1 fr
+  gap: 15px;
+  padding: 120px 15px 15px;
+  position: relative;
+  @media (min-width: 1024px) {
+    grid-area: images;
+    min-height: 80px;
+  }
 
-    &__img {
-        width: 100%;
-    }
+  &__img {
+    width: 100%;
+  }
 
-    h1 {
-        position: absolute;
-        top: 30px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.2);
-    }
+  h1 {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
-
 .contact {
-    grid-area: 3/1/4/-1;
-    height: 60px;
-    background-color: #987;
+  grid-area: 3/1/4/-1;
+  height: 60px;
+  background-color: #987;
+  @media (min-width: 1024px) {
+    grid-area: contact;
+    // min-height: 80px;
+  }
 }
 
 .footer {
-    grid-area: footnote/footnote/footnote/footnote;
-    height: 30px;
-    background-color: #564;
+  grid-area: footnote/footnote/footnote/footnote;
+  height: 30px;
+  background-color: #564;
 }
